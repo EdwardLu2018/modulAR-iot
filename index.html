@@ -2,15 +2,15 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- three.js library -->
-	<script src="AR-Toolkit.js/three.js/build/three.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
 	<!-- jsartookit -->
 	<script src="AR-Toolkit.js/vendor/jsartoolkit5/build/artoolkit.min.js"></script>
 	<script src="AR-Toolkit.js/vendor/jsartoolkit5/js/artoolkit.api.js"></script>
 	<!-- include threex.artoolkit -->
-	<script src="AR-Toolkit.js/src/threex/threex-artoolkitsource.js"></script>
-	<script src="AR-Toolkit.js/src/threex/threex-artoolkitcontext.js"></script>
-	<script src="AR-Toolkit.js/src/threex/threex-arbasecontrols.js"></script>
-	<script src="AR-Toolkit.js/src/threex/threex-armarkercontrols.js"></script>
+	<script src="https://raw.githubusercontent.com/jeromeetienne/AR.js/master/three.js/src/threex/threex-artoolkitsource.js"></script>
+	<script src="https://raw.githubusercontent.com/jeromeetienne/AR.js/master/three.js/src/threex/threex-artoolkitcontext.js"></script>
+	<script src="https://raw.githubusercontent.com/jeromeetienne/AR.js/master/three.js/src/threex/threex-arbasecontrols.js"></script>
+	<script src="https://raw.githubusercontent.com/jeromeetienne/AR.js/master/three.js/src/threex/threex-arbasecontrols.js/threex-armarkercontrols.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
@@ -71,10 +71,10 @@
 		  border-color: black;
 		  border-radius: 25px;
 			position: absolute;
-			z-index: 1; 
-			position: absolute; 
-			text-align: center; 
-			align-items: center; 
+			z-index: 1;
+			position: absolute;
+			text-align: center;
+			align-items: center;
 			color: white;
 		}
 
@@ -84,7 +84,7 @@
 	    -o-transition: all 0.5s ease-in-out;
 	    transition: all 0.5s ease-in-out;
 		}
-		
+
 		.rings{
 			position: absolute;
 		}
@@ -115,11 +115,11 @@
 		}
 
 		.square {
-			z-index: 1; 
-			position: absolute; 
-			width: 30px; 
-			height: 30px; 
-			background: white; 
+			z-index: 1;
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			background: white;
 		}
 	</style>
 </head>
@@ -149,7 +149,7 @@
 		</div>
 		<div class="inputDiv">
 
-			<h12> Mode: <span id = "LEDModes">Intensity</span> </h12> 
+			<h12> Mode: <span id = "LEDModes">Intensity</span> </h12>
 			<br>
 			<div class = "brightnessDiv">
 				Brightness: <input style="width: 35px; height: 10px" class="inputClass" type="number" value="0">
@@ -189,7 +189,7 @@
 		</div>
 		<div class="inputDiv">
 
-			<h12> Mode: <span id = "PhotoTempModes">temp</span> </h12> 
+			<h12> Mode: <span id = "PhotoTempModes">temp</span> </h12>
 			<br>
 			<span id = "photoLabel">light</span>
 			<span id = "tempLabel" style = "display:none">temp</span> <!-- edit the inner html -->
@@ -219,7 +219,7 @@
 		</div>
 		<div class="inputDiv">
 
-			<h12> Mode: <span id = "ClockPotModes">temp</span> </h12> 
+			<h12> Mode: <span id = "ClockPotModes">temp</span> </h12>
 			<br>
 			<div class = "clockDiv">
 				<span id = "clockLabel">clock</span> <!-- edit the inner html -->
@@ -253,7 +253,7 @@
 		</div>
 		<div class="inputDiv">
 
-			<h12> Mode: <span id = "LCDBuzzModes">Intensity</span> </h12> 
+			<h12> Mode: <span id = "LCDBuzzModes">Intensity</span> </h12>
 			<br>
 			<div class = "LCDDiv">
 				Number: <input style="width: 35px; height: 10px" class="inputLCD" type="number" value="0">
@@ -340,7 +340,7 @@
 			renderer.domElement.style.top = "0px"
 			renderer.domElement.style.left = "0px"
 			document.body.appendChild( renderer.domElement );
-			
+
 			// setup arToolkitSource
 			arToolkitSource = new THREEx.ArToolkitSource({
 				sourceType : "webcam",
@@ -349,13 +349,13 @@
 			arToolkitSource.init(function onReady(){
 				onResize()
 			});
-			
+
 			// create atToolkitContext
 			arToolkitContext = new THREEx.ArToolkitContext({
 				cameraParametersUrl: "AR-Toolkit.js/data/data/camera_para.dat",
 				detectionMode: "mono"
 			})
-			
+
 			// copy projection matrix to camera when initialization complete
 			arToolkitContext.init(function onCompleted(){
 				camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
@@ -420,10 +420,10 @@
 			currPhotoTempState = photoTempStates[photoTemIndex];
 			currClockPotState = clockPotStates[clockPotIndex];
 
-			document.getElementById("LEDModes").innerHTML = " " + currLEDState; 
+			document.getElementById("LEDModes").innerHTML = " " + currLEDState;
 			document.getElementById("PhotoTempModes").innerHTML = " " + currPhotoTempState;
 			document.getElementById("ClockPotModes").innerHTML = " " + currClockPotState;
-			document.getElementById("LCDBuzzModes").innerHTML = " " + currLCDBuzzState; 
+			document.getElementById("LCDBuzzModes").innerHTML = " " + currLCDBuzzState;
 
 			var inputLEDStateReg = document.getElementsByClassName("inputClass")[0];
 			var inputLEDStateRGBArray = document.getElementsByClassName("inputClass2");
@@ -451,7 +451,7 @@
 			if (markerRoot1.visible === true){
 				if (currLEDState == "Intensity"){
 					submitform(parseInt(inputLEDStateReg.value), caramelApple, "changeIntensity", accessCode);
-					//change the display 
+					//change the display
 					inputLEDStateBrightnessDisplay.style.display = "";
 					inputLEDStateRGBDisplay.style.display = "none";
 					inputLEDStateStripDisplay.style.display ="none";
@@ -478,14 +478,14 @@
 				if (currPhotoTempState == "photo"){
 					getLight(friedOnion, "getVal", accessCode);
 					photoDisplay.innerHTML = "Light: " + light;
-					//change the display 
+					//change the display
 					photoDisplay.style.display = "";
 					tempDisplay.style.display = "none";
 				}
 				else if (currPhotoTempState == "temp"){
 					getTemp(friedOnion, "getTemp", accessCode);
 					tempDisplay.innerHTML = "Temp: " + temp;
-					//change the display 
+					//change the display
 					photoDisplay.style.display = "none";
 					tempDisplay.style.display = "";
 				}
@@ -493,14 +493,14 @@
 			if (markerRoot3.visible === true){
 				if (currClockPotState == "clock"){
 					clockLabel.innerHTML = "Seconds: " + date.getSeconds();
-					//change the display 
+					//change the display
 					clockDisplay.style.display = "";
 					potDisplay.style.display = "none";
 				}
 				else if (currClockPotState == "pot"){
 					submitform(parseInt(potInput.value), cuteStation, "setPot", accessCode);
 					potVal = getPot(cuteStation, "getPot", accessCode);
-					//change the display 
+					//change the display
 					clockDisplay.style.display = "none";
 					potDisplay.style.display = "";
 				}
@@ -509,13 +509,13 @@
 			if (markerRoot4.visible === true){
 				if (currLCDBuzzState == "LCD"){
 					submitform(parseInt(inputLCDState.value), lemon, "changeText", accessCode1);
-					//change the display 
+					//change the display
 					inputLCDStateDisplay.style.display = "";
 					inputBuzzStateDisplay.style.display = "none";
 				}
 				else if (currLCDBuzzState == "Buzzer"){
 					submitform(parseInt(inputBuzzState.value), lemon, "changeIntensity", accessCode1);
-					
+
 					//change the display
 					inputLCDStateDisplay.style.display = "none";
 					inputBuzzStateDisplay.style.display = "";
@@ -698,7 +698,7 @@
 	    vector.x = ( vector.x * widthHalf ) + widthHalf; // 200 to 400
 	    vector.y = - ( vector.y * heightHalf ) + heightHalf; // 100 to 400
 
-	    return { 
+	    return {
         x: vector.x,
         y: vector.y
 	    };
@@ -749,9 +749,9 @@
 
 		function onResize(){
 			arToolkitSource.onResizeElement()
-			arToolkitSource.copyElementSizeTo(renderer.domElement)	
+			arToolkitSource.copyElementSizeTo(renderer.domElement)
 			if (arToolkitContext.arController !== null){
-				arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas)	
+				arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas)
 			}
 		}
 
@@ -817,7 +817,7 @@
 		function animate(){
 			requestAnimationFrame(animate);
 
-			// runs all update functions 
+			// runs all update functions
 			updateFuncs.forEach(function(func){ func(); });
 
 			render();
@@ -853,7 +853,7 @@
 		height: 100%;
 		width: 6px;
 		display: inline-block;
-		
+
 		-webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
 		animation: sk-stretchdelay 1.2s infinite ease-in-out;
 	}
@@ -869,16 +869,16 @@
 	}
 
 	@-webkit-keyframes sk-stretchdelay {
-		0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+		0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
 		20% { -webkit-transform: scaleY(1.0) }
 	}
 
 	@keyframes sk-stretchdelay {
-		0%, 40%, 100% { 
+		0%, 40%, 100% {
 			transform: scaleY(0.4);
 			-webkit-transform: scaleY(0.4);
 			}
-		20% { 
+		20% {
 			transform: scaleY(1.0);
 			-webkit-transform: scaleY(1.0);
 		}
